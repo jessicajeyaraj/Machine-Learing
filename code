@@ -1,0 +1,38 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sklearn
+from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
+from nltk.stem.wordnet import WordNetLemmatizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import train_test_split
+import seaborn as sns
+from sklearn import metrics
+from sklearn.feature_extraction import text
+import nltk
+import re
+import nltk
+from nltk.corpus import stopwords
+from sklearn.model_selection import train_test_split
+df = pd.read_csv("/content/customerreviews.csv")
+df.head()
+  df.dropna(subset=['Sentiment'],  inplace=True)
+df.shape
+  df['description'] = df['Review'] + " " + df['Summary']
+df.head(10)
+  sns.set(style="darkgrid")
+ax = sns.countplot(x="Sentiment", data=df)
+  df.columns
+label = df['Sentiment']
+label
+ df['description'] = df['description'].str.replace(r"@"," at ")
+    df['description'] = df['description'].str.replace("#[^a-zA-Z0-9_]+"," ")
+    df['description'] = df['description'].str.replace(r"[^a-zA-Z(),\"'\n_]"," ")
+    df['description'] = df['description'].str.replace(r"http\S+","")
+    df['description'] = df['description'].str.lower()
+df.Sentiment.replace({'negative':0,'positive':1},inplace=True)
+df.Sentiment
+y = df['Sentiment'].values
+x = df['description'].values
+x
